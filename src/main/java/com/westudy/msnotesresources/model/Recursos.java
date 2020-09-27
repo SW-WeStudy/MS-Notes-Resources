@@ -8,7 +8,7 @@ public class Recursos {
     @Id
     @Column(name = "id_recurso")
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private String id;
+    private Integer id;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_clase")
@@ -36,11 +36,11 @@ public class Recursos {
     @Column(name = "content")
     private String content;
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 }

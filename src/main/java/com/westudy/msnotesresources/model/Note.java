@@ -1,5 +1,7 @@
 package com.westudy.msnotesresources.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.util.List;
 import java.util.Set;
@@ -7,13 +9,27 @@ import java.util.Set;
 @Entity
 @Table(name = "NOTA")
 public class Note {
+
+    public Note(){}
+    public Note(Integer id){
+        this.id = id;
+    }
+
     @Id
     @Column(name = "id_note")
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private String id;
+    private Integer id;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "note")
     private List<Comentario> comentarios;
+
+    public List<Comentario> getComentarios() {
+        return comentarios;
+    }
+
+    public void setComentarios(List<Comentario> comentarios) {
+        this.comentarios = comentarios;
+    }
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_clase")
@@ -53,12 +69,12 @@ public class Note {
     @Column(name = "score")
     private Integer score;
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
 
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 }

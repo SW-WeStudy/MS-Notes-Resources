@@ -1,5 +1,8 @@
 package com.westudy.msnotesresources.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 
 @Entity
@@ -9,10 +12,22 @@ public class Comentario {
     @Id
     @Column(name = "id_comentario")
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private String id;
+    private Integer id;
+    @Transient
+    @JsonIgnore
+    public Integer idNote;
+
+    public Note getNote() {
+        return note;
+    }
+
+    public void setNote(Note note) {
+        this.note = note;
+    }
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_note")
+    @JsonIgnore
     private Note note;
 
     @Column(name = "id_user")
@@ -37,11 +52,11 @@ public class Comentario {
     @Column(name = "content")
     private String content;
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 }
