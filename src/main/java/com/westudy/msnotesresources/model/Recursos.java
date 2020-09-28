@@ -1,17 +1,31 @@
 package com.westudy.msnotesresources.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
-@Table(name = "RECURSOS")
+@Table(name = "RESOURCE")
 public class Recursos {
     @Id
     @Column(name = "id_recurso")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY,  generator="native")
     private Integer id;
+
+    @Transient
+    public Integer idClase;
+
+    public Clase getClase() {
+        return clase;
+    }
+
+    public void setClase(Clase clase) {
+        this.clase = clase;
+    }
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_clase")
+    @JsonIgnore
     private Clase clase;
 
     public String getIdUser() {

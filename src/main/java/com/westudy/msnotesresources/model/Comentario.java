@@ -6,15 +6,14 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "COMENTARIO")
+@Table(name = "COMMENT")
 public class Comentario {
 
     @Id
     @Column(name = "id_comentario")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY,  generator="native")
     private Integer id;
     @Transient
-    @JsonIgnore
     public Integer idNote;
 
     public Note getNote() {

@@ -5,15 +5,29 @@ import java.util.List;
 import java.util.Set;
 
 @Entity
-@Table(name = "CLASE")
+@Table(name = "COURSE")
 public class Clase {
     @Id
     @Column(name = "id_clase")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY,  generator="native")
     private Integer id;
+
+
+    public Clase(){}
+    public Clase(Integer id){
+        this.id = id;
+    }
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "clase")
     private List<Note> notas;
+
+    public List<Recursos> getRecursos() {
+        return recursos;
+    }
+
+    public void setRecursos(List<Recursos> recursos) {
+        this.recursos = recursos;
+    }
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "clase")
     private List<Recursos> recursos;

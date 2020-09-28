@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Set;
 
 @Entity
-@Table(name = "NOTA")
+@Table(name = "NOTE")
 public class Note {
 
     public Note(){}
@@ -17,7 +17,7 @@ public class Note {
 
     @Id
     @Column(name = "id_note")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY,  generator="native")
     private Integer id;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "note")

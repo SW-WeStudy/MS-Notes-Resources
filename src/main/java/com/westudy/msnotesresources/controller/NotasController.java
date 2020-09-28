@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.*;
 
 @RestController
-@RequestMapping("class/notes")
+@RequestMapping("course/notes")
 public class NotasController {
 
     @Autowired
@@ -31,7 +31,12 @@ public class NotasController {
         Optional<Note> nota = noteDAO.findById(id);
         if(nota.isPresent()){
             Note notePresent = nota.get();
-            return notePresent.getComentarios();
+            List<Comentario> lista = notePresent.getComentarios();
+            for(Comentario c: lista){
+                c.idNote = id;
+            }
+            return lista;
+
         }
         return null;
     }
