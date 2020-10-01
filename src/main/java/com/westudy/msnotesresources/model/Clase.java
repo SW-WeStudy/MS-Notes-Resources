@@ -5,11 +5,10 @@ import java.util.List;
 import java.util.Set;
 
 @Entity
-@Table(name = "COURSE")
+@Table(name = "course")
 public class Clase {
     @Id
-    @Column(name = "id_clase")
-    @GeneratedValue(strategy = GenerationType.IDENTITY,  generator="native")
+    @Column(name = "id_course", nullable = false)
     private Integer id;
 
 

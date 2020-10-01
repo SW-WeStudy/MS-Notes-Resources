@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("class/notes/comment")
+@RequestMapping("course/notes/comment")
 public class ComentariosController {
 
     @Autowired

@@ -8,7 +8,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "NOTE")
-public class Note {
+public class    Note {
 
     public Note(){}
     public Note(Integer id){
@@ -16,8 +16,7 @@ public class Note {
     }
 
     @Id
-    @Column(name = "id_note")
-    @GeneratedValue(strategy = GenerationType.IDENTITY,  generator="native")
+    @Column(name = "id_note", nullable = false)
     private Integer id;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "note")
@@ -32,7 +31,7 @@ public class Note {
     }
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_clase")
+    @JoinColumn(name = "id_course")
     private Clase clase;
 
     @Column(name = "id_user")

@@ -24,7 +24,7 @@ public class Recursos {
     }
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_clase")
+    @JoinColumn(name = "id_course")
     @JsonIgnore
     private Clase clase;
 
