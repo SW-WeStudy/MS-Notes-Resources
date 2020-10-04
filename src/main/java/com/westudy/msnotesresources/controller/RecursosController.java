@@ -57,6 +57,7 @@ public class RecursosController {
         }
         res.put("res","true");
         res.put("message","recurso creado correctamente");
+	res.put("id", recurso.getId());
         return res;
     }
 

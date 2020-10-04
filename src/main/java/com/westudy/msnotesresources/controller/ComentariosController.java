@@ -33,6 +33,7 @@ public class ComentariosController {
         }
         res.put("res","true");
         res.put("message","comentario guardado correctamente");
+	res.put("id", comentario.getId());
         return res;
     }
 
